@@ -8,11 +8,12 @@ import org.junit.Test
 
 class UserInfoTest {
     val name = "Test"
-    val phNumber = "1234567890"
+    val phNumber: PhoneNumber = PhoneNumber()
     val upi = "xyz@abc"
 
     @Before
     fun setUp() {
+        phNumber.phoneNumber = "1234567890"
     }
 
     @After
@@ -32,15 +33,6 @@ class UserInfoTest {
         val uInfo = createUserInfo(name, phNumber, upi)
         assertTrue(uInfo.validateName("test"))
         assertFalse(uInfo.validateName(""))
-    }
-
-    @Test
-    fun test_validatePhoneNumber() {
-        val uInfo = createUserInfo(name, phNumber, upi)
-        assertFalse(uInfo.validatePhoneNumber("testaaaaaa"))
-        assertTrue(uInfo.validatePhoneNumber("1234567890"))
-        assertFalse(uInfo.validatePhoneNumber(""))
-        assertFalse(uInfo.validatePhoneNumber("abc"))
     }
 
     @Test
