@@ -12,3 +12,14 @@
 /captures
 .externalNativeBuild
 .cxx
+/.idea/codeStyles/
+/.idea/dictionaries/
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/runConfigurations.xml
+/app/.gitignore
+/gradle.properties
+/gradle/
+/gradlew
+/gradlew.bat
+
