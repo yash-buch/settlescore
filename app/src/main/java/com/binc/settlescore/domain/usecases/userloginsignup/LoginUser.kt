@@ -4,7 +4,7 @@ import com.binc.settlescore.domain.BaseUseCase
 import com.binc.settlescore.domain.interactors.UserInfo
 import javax.inject.Inject
 
-class SignupUser @Inject constructor(userInfo: UserInfo, repository: Repository) :
+class LoginUser @Inject constructor(userInfo: UserInfo, repository: Repository) :
     BaseUseCase<Unit>() {
     var userInfo: UserInfo
     var repository: Repository
@@ -14,12 +14,11 @@ class SignupUser @Inject constructor(userInfo: UserInfo, repository: Repository)
         this.repository = repository
     }
 
-
     override suspend fun doInBackground() {
-        repository.signupUser(userInfo)
+        repository.loginUser(userInfo)
     }
 
     interface Repository {
-        fun signupUser(userInfo: UserInfo)
+        fun loginUser(userInfo: UserInfo)
     }
 }

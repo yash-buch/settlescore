@@ -22,12 +22,28 @@ class UserInfo
     }
 
     private fun validateName(name: String): Boolean {
-        //TODO("Not implemented")
+        return when(true) {
+            "".equals(name) -> false
+            !isOnlyAlphabets(name) -> false
+            else -> true
+        }
+    }
+
+    private fun isOnlyAlphabets(name: String): Boolean {
+        name.decapitalize().forEach { if ((it < 'a') or (it > 'z')) return false }
         return true
     }
 
     private fun validatePhoneNumber(phoneNumber: String): Boolean {
-        //TODO("Not implemented")
+        return when(true) {
+            phoneNumber.length == 10 -> true
+            !isOnlyDigits(phoneNumber) -> true
+            else -> false
+        }
+    }
+
+    private fun isOnlyDigits(phoneNumber: String): Boolean {
+        phoneNumber.forEach { if((it < '0') or (it > '9') ) return false}
         return true
     }
 
@@ -42,6 +58,7 @@ class UserInfo
     }
 
     companion object {
+        val DUMMY_USER = UserInfo("name", "phone number", "upi", "email")
         class Mapper constructor() {
             var name = ""
             var phoneNumber = ""

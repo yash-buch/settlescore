@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class FireBaseRepositoryModule {
+class FirebaseMemberQueryRepositoryModule {
     @Provides
     fun provideFireBaseRepository(): GetMemberList.Repository {
         return FirebaseRepo<List<UserInfo>>()
