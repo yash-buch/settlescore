@@ -7,13 +7,13 @@ class ResultTest {
 
     @Test
     fun test_createResultWithString() {
-        var result = Result("test")
+        val result = Result("test")
         assertEquals("test", result.result)
     }
 
     @Test
     fun test_createResultWithInt() {
-        var result = Result(1)
+        val result = Result(1)
         assertEquals(1, result.result)
     }
 }

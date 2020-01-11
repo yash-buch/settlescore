@@ -57,9 +57,25 @@ class UserInfo
         return true
     }
 
+    override fun equals(other: Any?): Boolean {
+        if(other !is UserInfo) return false
+        var userInfo = other
+        if (userInfo.name == this.name
+            && userInfo.email == this.email
+            && userInfo.upi == this.upi
+            && userInfo.phoneNumber == this.phoneNumber)
+            return true
+        return false
+    }
+
+    override fun toString(): String {
+        return "userInfo: name > $name \n phone number > $phoneNumber \n" +
+                " email > $email \n upi > $upi"
+    }
+
     companion object {
         val DUMMY_USER = UserInfo("name", "phone number", "upi", "email")
-        class Mapper constructor() {
+        class Mapper {
             var name = ""
             var phoneNumber = ""
             var upi = ""
