@@ -5,16 +5,16 @@ import com.binc.settlescore.domain.interactors.Result
 import com.binc.settlescore.domain.interactors.UserInfo
 import javax.inject.Inject
 
-class GetMemberList @Inject constructor(private var repo: Repository) : BaseUseCase<List<UserInfo>>() {
-    override suspend fun doInBackground(): List<UserInfo> {
+class GetMemberList @Inject constructor(private var repo: Repository) : BaseUseCase<ArrayList<UserInfo>>() {
+    override suspend fun doInBackground(): ArrayList<UserInfo> {
         return repo.getMemberList()
     }
 
-    suspend fun getMemberList(): Result<List<UserInfo>> {
+    suspend fun getMemberList(): Result<ArrayList<UserInfo>> {
         return executeAsync()
     }
 
     interface Repository {
-        fun getMemberList(): List<UserInfo>
+        fun getMemberList(): ArrayList<UserInfo>
     }
 }

@@ -1,6 +1,7 @@
 package com.binc.settlescore.domain.interactors
 
 import com.binc.settlescore.common.exceptions.ParamIncorrectException
+import java.util.*
 import javax.inject.Inject
 
 class UserInfo

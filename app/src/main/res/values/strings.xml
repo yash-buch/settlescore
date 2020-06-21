@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SettleScore</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="place_holder_text">Place holder text</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

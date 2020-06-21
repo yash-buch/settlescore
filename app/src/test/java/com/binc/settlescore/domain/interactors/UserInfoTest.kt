@@ -40,7 +40,7 @@ class UserInfoTest {
     }
 
     @Test
-    fun testToString() {
+    fun test_toString() {
         println(UserInfo.DUMMY_USER.toString())
     }
 
