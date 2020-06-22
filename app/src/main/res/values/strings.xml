@@ -2,6 +2,10 @@
     <string name="app_name">SettleScore</string>
 
     <string name="title_activity_splash">SplashActivity</string>
-    <string name="place_holder_text">Place holder text</string>
+    <string name="place_holder_date">dd/mm/yyyy</string>
+    <string name="place_holder_amount">100</string>
+    <string name="place_holder_name">Cristiano Ronaldo</string>
+    <string name="last_payment">Last payment on:</string>
+    <string name="comma_space_amount">, Amount:</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

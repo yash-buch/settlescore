@@ -18,7 +18,10 @@ class UserViewHolder(inflater: LayoutInflater, parent: ViewGroup, private var us
     init {
         nameTV = itemView.findViewById(R.id.tv_name)
         checkBox = itemView.findViewById(R.id.cb_check)
-        checkBox?.setOnClickListener { userItemAdapter.setItemSelected((it as CheckBox).isChecked, pos) }
+        itemView.setOnClickListener {
+            checkBox?.isChecked = !checkBox?.isChecked!!
+            userItemAdapter.setItemSelected(checkBox?.isChecked!!, pos)
+        }
     }
 
     fun bind(userItem: UserInfoItem, position: Int) {
