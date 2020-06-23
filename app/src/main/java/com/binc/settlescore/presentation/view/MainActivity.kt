@@ -1,6 +1,8 @@
 package com.binc.settlescore.presentation.view
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,11 +36,18 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
         recycler_view.apply {
             adapter = mainViewModel.mainAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
-            var dividerDecor: DividerItemDecoration = DividerItemDecoration(this@MainActivity
+            val dividerDecor: DividerItemDecoration = DividerItemDecoration(this@MainActivity
                 , RecyclerView.VERTICAL)
             addItemDecoration(dividerDecor)
         }
 
         mainViewModel.onCreate()
+
+        val seekBtn = findViewById<Button>(R.id.btn_seek)
+        seekBtn.setOnClickListener { mainViewModel.onSeekBtnClicked() }
+    }
+
+    override fun showToast(msg: String) {
+        Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
     }
 }
