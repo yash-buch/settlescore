@@ -4,8 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.binc.settlescore.R
-import com.binc.settlescore.dagger.startupgraph.DaggerSplashComponent
+import com.binc.settlescore.SSApplication
 import com.binc.settlescore.dagger.startupgraph.SplashComponent
+import com.binc.settlescore.domain.interactors.Logger
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class SplashActivity : AppCompatActivity() {
 
     @Inject lateinit var nextIntent: Intent
+    @Inject lateinit var logger: Logger
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +26,8 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         supportActionBar?.hide()
-        var component: SplashComponent = DaggerSplashComponent.create()
+        val component: SplashComponent = (application as SSApplication).getAppComponent()
+            .getSplashComponent()
         component.inject(this)
         startNextActivityWithDelay()
     }
@@ -35,5 +38,10 @@ class SplashActivity : AppCompatActivity() {
             if(!isDestroyed) startActivity(nextIntent)
             finish()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        logger.log("SplashActivity", "activity finished")
     }
 }

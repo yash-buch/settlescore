@@ -8,7 +8,7 @@ import com.binc.settlescore.domain.usecases.userloginsignup.LoginUser
 import com.binc.settlescore.domain.usecases.userloginsignup.SignupUser
 import javax.inject.Inject
 
-class FirebaseRepo<K> @Inject constructor() : BaseRepo<K>(),
+class FirebaseRepo @Inject constructor() : BaseRepo<UserInfo>(),
     GetMemberList.Repository,
     SignupUser.Repository,
     LoginUser.Repository {

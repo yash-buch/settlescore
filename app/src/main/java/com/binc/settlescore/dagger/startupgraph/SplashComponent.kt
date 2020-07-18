@@ -1,9 +1,9 @@
 package com.binc.settlescore.dagger.startupgraph
 
 import com.binc.settlescore.presentation.view.SplashActivity
-import dagger.Component
+import dagger.Subcomponent
 
-@Component(modules = [NextIntentModule::class])
+@Subcomponent(modules = [NextIntentModule::class])
 interface SplashComponent {
 
     fun inject(activity: SplashActivity)

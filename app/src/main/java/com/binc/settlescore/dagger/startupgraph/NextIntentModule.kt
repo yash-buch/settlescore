@@ -9,7 +9,7 @@ import dagger.Provides
 class NextIntentModule {
     @Provides
     fun provideNextIntent(): Intent {
-        var nextIntent = Intent()
+        val nextIntent = Intent()
         nextIntent.setComponent(ComponentName("com.binc.settlescore",
             "com.binc.settlescore.presentation.view.MainActivity"))
         return nextIntent
