@@ -56,5 +56,6 @@ class MainActivity : AppCompatActivity(), MainViewModel.MainView {
     override fun onDestroy() {
         super.onDestroy()
         (application as SSApplication).closeMemberQuery()
+        mainViewModel.detachView()
     }
 }

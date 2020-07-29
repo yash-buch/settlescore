@@ -1,15 +1,11 @@
 package com.binc.settlescore.domain.interactors
 
 import com.binc.settlescore.common.exceptions.ParamIncorrectException
-import java.util.*
 import javax.inject.Inject
 
-class UserInfo
-@Inject constructor(name: String, phoneNumber: String, upi: String, email: String = "") {
-    var name: String
-    var phoneNumber: String
-    var upi: String
-    var email: String
+open class UserInfo
+@Inject constructor(open var name: String, open var phoneNumber: String, open var upi: String,
+                    open var email: String = "") {
 
     init {
         this.name = if (validateName(name)) name
@@ -24,7 +20,7 @@ class UserInfo
 
     private fun validateName(name: String): Boolean {
         return when(true) {
-            "".equals(name) -> false
+            "" == name -> false
             !isOnlyAlphabets(name) -> false
             else -> true
         }
@@ -56,6 +52,13 @@ class UserInfo
     private fun validateEmail(email: String): Boolean {
         //TODO("Not implemented")
         return true
+    }
+
+    fun verifyUser(): Boolean {
+        return validateEmail(email) &&
+                validateName(name) &&
+                validatePhoneNumber(phoneNumber) &&
+                validateUPI(upi)
     }
 
     override fun equals(other: Any?): Boolean {

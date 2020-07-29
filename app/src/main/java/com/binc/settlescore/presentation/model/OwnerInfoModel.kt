@@ -4,7 +4,6 @@ import com.binc.settlescore.domain.interactors.OwnerInfo
 
 class OwnerInfoModel constructor(var ownerInfo: OwnerInfo) {
     fun isOwnerVerified(): Boolean {
-        //TODO: implementation pending
-        return true
+        return ownerInfo.verifyUser()
     }
 }

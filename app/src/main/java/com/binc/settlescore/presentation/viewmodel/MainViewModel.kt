@@ -21,10 +21,14 @@ class MainViewModel
 
     private val EMPTY_SELECTION_MSG: String = "No items selected"
     private var mainModel: MainModel? = null
-    private var ownerInfoModel: OwnerInfoModel? = null
+    private lateinit var ownerInfoModel: OwnerInfoModel
 
     fun attachView(v: MainView) {
         view = v
+    }
+
+    fun detachView() {
+        view = null
     }
 
     fun onCreate() {
@@ -45,7 +49,7 @@ class MainViewModel
         viewModelScope.launch {
             val result = ownerInfoUC.getOwnerInfo()
             ownerInfoModel = OwnerInfoModel(result.result)
-            if (ownerInfoModel!!.isOwnerVerified()) {
+            if (ownerInfoModel.isOwnerVerified()) {
                 view?.showOwnerVerificationDialog()
             }
         }
