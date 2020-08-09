@@ -1,4 +1,4 @@
-package com.binc.settlescore.dagger
+package com.binc.settlescore.dagger.annotations
 
 import javax.inject.Qualifier
 

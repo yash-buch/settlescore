@@ -2,6 +2,7 @@ package com.binc.settlescore.dagger
 
 import android.app.Application
 import android.content.Context
+import com.binc.settlescore.dagger.annotations.ApplicationContext
 import com.binc.settlescore.domain.interactors.Logger
 import com.binc.settlescore.infrastructure.AndroidLogger
 import dagger.Module

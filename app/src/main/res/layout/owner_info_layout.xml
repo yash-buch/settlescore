@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FF888888"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/owner_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/name"
+        android:autofillHints="@string/name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/owner_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/email"
+        android:autofillHints="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/owner_ph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/phNumber"
+        android:autofillHints="@string/phNumber"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/owner_upi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/upi"
+        android:autofillHints="@string/upi"
+        android:inputType="textPersonName"/>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/save" />
+</LinearLayout>

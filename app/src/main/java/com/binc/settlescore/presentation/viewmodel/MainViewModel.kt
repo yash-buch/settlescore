@@ -3,9 +3,11 @@ package com.binc.settlescore.presentation.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.binc.settlescore.domain.interactors.OwnerInfo
 import com.binc.settlescore.domain.interactors.UserInfo
 import com.binc.settlescore.domain.usecases.memberqueries.GetMemberList
 import com.binc.settlescore.domain.usecases.memberqueries.GetOwnerInfo
+import com.binc.settlescore.domain.usecases.userloginsignup.SetOwnerInfo
 import com.binc.settlescore.presentation.model.MainModel
 import com.binc.settlescore.presentation.model.OwnerInfoModel
 import com.binc.settlescore.presentation.view.adapter.MainAdapter
@@ -15,7 +17,9 @@ import javax.inject.Inject
 class MainViewModel
 @Inject constructor(
     private val memberListUC: GetMemberList, application: Application,
-    private val ownerInfoUC: GetOwnerInfo, var mainAdapter: MainAdapter) : AndroidViewModel(application) {
+    private val getOwnerInfoUC: GetOwnerInfo, var mainAdapter: MainAdapter,
+    private val setOwnerInfoUC: SetOwnerInfo
+) : AndroidViewModel(application) {
 
     var view: MainView? = null
 
@@ -45,12 +49,20 @@ class MainViewModel
         verifyOwnerInfoAndProceed()
     }
 
+    fun saveOwnerInfo(ownerInfo: OwnerInfo) {
+        viewModelScope.launch {
+            setOwnerInfoUC.setOwnerInfo(ownerInfo)
+        }
+    }
+
     private fun verifyOwnerInfoAndProceed() {
         viewModelScope.launch {
-            val result = ownerInfoUC.getOwnerInfo()
+            val result = getOwnerInfoUC.getOwnerInfo()
             ownerInfoModel = OwnerInfoModel(result.result)
-            if (ownerInfoModel.isOwnerVerified()) {
+            if (!ownerInfoModel.isOwnerVerified()) {
                 view?.showOwnerVerificationDialog()
+            } else {
+                view?.showToast("Owner verification already done.")
             }
         }
     }

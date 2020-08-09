@@ -1,11 +1,14 @@
 package com.binc.settlescore.dagger.signuplogingraph
 
+import com.binc.settlescore.dagger.module.IntentModule
+import com.binc.settlescore.dagger.module.LocalRepositoryModule
 import com.binc.settlescore.domain.usecases.userloginsignup.LoginUser
 import com.binc.settlescore.domain.usecases.userloginsignup.SignupUser
-import dagger.Component
+import com.binc.settlescore.presentation.view.OwnerInfoFragment
+import com.binc.settlescore.presentation.view.SignUpActivity
+import dagger.Subcomponent
 
-@Component(modules = [FirebaseLoginSignupRepositoryModule::class, UserInfoModule::class])
+@Subcomponent(modules = [FirebaseLoginSignupRepositoryModule::class, IntentModule::class, LocalRepositoryModule::class])
 interface SignupLoginComponent {
-    fun getSignupUserUseCase(): SignupUser
-    fun getLoginUserUseCase(): LoginUser
+    fun inject(signUpActivity: SignUpActivity)
 }

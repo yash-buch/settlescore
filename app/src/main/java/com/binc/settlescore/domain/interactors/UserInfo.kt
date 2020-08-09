@@ -34,7 +34,7 @@ open class UserInfo
     private fun validatePhoneNumber(phoneNumber: String): Boolean {
         return when(true) {
             phoneNumber.length == 10 -> true
-            !isOnlyDigits(phoneNumber) -> true
+            !isOnlyDigits(phoneNumber) -> false
             else -> false
         }
     }
@@ -58,7 +58,15 @@ open class UserInfo
         return validateEmail(email) &&
                 validateName(name) &&
                 validatePhoneNumber(phoneNumber) &&
-                validateUPI(upi)
+                validateUPI(upi) &&
+                !dummyUser()
+    }
+
+    private fun dummyUser(): Boolean {
+        return "dummy" == name &&
+                "0000000000" == phoneNumber &&
+                "dummy" == email &&
+                "dummy" == upi
     }
 
     override fun equals(other: Any?): Boolean {
@@ -78,7 +86,7 @@ open class UserInfo
     }
 
     companion object {
-        val DUMMY_USER = UserInfo("name", "phone number", "upi", "email")
+        val DUMMY_USER = UserInfo("name", "1234567890", "upi", "email")
         class Mapper {
             var name = ""
             var phoneNumber = ""

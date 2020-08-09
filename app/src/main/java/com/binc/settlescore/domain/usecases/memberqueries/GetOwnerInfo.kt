@@ -8,10 +8,6 @@ import javax.inject.Inject
 
 class GetOwnerInfo @Inject constructor(private var repo: Repository, logger: Logger): BaseUseCase<OwnerInfo>() {
 
-    init {
-        logger.log("GetOwnerInfo", "object created")
-    }
-
     override suspend fun doInForeground(): OwnerInfo {
         return repo.getOwnerInfo()
     }

@@ -8,9 +8,6 @@ import javax.inject.Inject
 
 class GetMemberList @Inject constructor (private var repo: Repository, logger: Logger) : BaseAsyncUseCase<ArrayList<UserInfo>>() {
 
-    init {
-        logger.log("GetMemberList", "object created")
-    }
     override suspend fun doInBackground(): ArrayList<UserInfo> {
         return repo.getMemberList()
     }

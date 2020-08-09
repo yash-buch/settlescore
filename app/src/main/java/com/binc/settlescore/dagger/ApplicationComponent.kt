@@ -1,6 +1,7 @@
 package com.binc.settlescore.dagger
 
 import com.binc.settlescore.dagger.memberquerygraph.MemberQueryComponent
+import com.binc.settlescore.dagger.signuplogingraph.SignupLoginComponent
 import com.binc.settlescore.dagger.startupgraph.SplashComponent
 import dagger.Component
 
@@ -8,6 +9,7 @@ import dagger.Component
 interface ApplicationComponent {
     fun getSplashComponent(): SplashComponent
     fun getMemberQueryComponent(): MemberQueryComponent
+    fun getSignUpLoginComponent(): SignupLoginComponent
 
     @Component.Builder
     interface Builder {

@@ -5,6 +5,7 @@ import com.binc.settlescore.dagger.ApplicationComponent
 import com.binc.settlescore.dagger.ApplicationModule
 import com.binc.settlescore.dagger.DaggerApplicationComponent
 import com.binc.settlescore.dagger.memberquerygraph.MemberQueryComponent
+import com.google.firebase.FirebaseApp
 
 class SSApplication : Application() {
     private val applicationComponent: ApplicationComponent by lazy {
@@ -17,6 +18,11 @@ class SSApplication : Application() {
 
     companion object {
         val DEBUG: Boolean = true
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        FirebaseApp.initializeApp(this)
     }
 
     fun getAppComponent(): ApplicationComponent {

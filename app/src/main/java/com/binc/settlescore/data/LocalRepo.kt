@@ -3,14 +3,14 @@ package com.binc.settlescore.data
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import com.binc.settlescore.dagger.ApplicationContext
+import com.binc.settlescore.dagger.annotations.ApplicationContext
 import com.binc.settlescore.domain.interactors.OwnerInfo
-import com.binc.settlescore.domain.interactors.UserInfo
 import com.binc.settlescore.domain.usecases.memberqueries.GetOwnerInfo
+import com.binc.settlescore.domain.usecases.userloginsignup.SetOwnerInfo
 import javax.inject.Inject
 
-class LocalRepo @Inject constructor(@ApplicationContext var mContext: Context): BaseRepo<OwnerInfo>(),
-    GetOwnerInfo.Repository{
+open class LocalRepo @Inject constructor(@ApplicationContext var mContext: Context): BaseRepo<OwnerInfo>(),
+    GetOwnerInfo.Repository, SetOwnerInfo.Repository{
 
     private lateinit var name: String
     private lateinit var phoneNumber: String
@@ -41,7 +41,17 @@ class LocalRepo @Inject constructor(@ApplicationContext var mContext: Context): 
     }
 
     private fun buildEmptyOwnerInfo(): OwnerInfo {
-        return OwnerInfo("name", "phone number", "upi", "email")
+        return OwnerInfo("dummy", "0000000000", "dummy", "dummy")
+    }
+
+    override fun setOwnerInfo(ownerInfo: OwnerInfo) {
+        val sp: SharedPreferences = mContext.getSharedPreferences(SP_NAME, MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = sp.edit()
+        editor.putString(KEY_NAME, ownerInfo.name)
+        editor.putString(KEY_EMAIL, ownerInfo.email)
+        editor.putString(KEY_PHNUM, ownerInfo.phoneNumber)
+        editor.putString(KEY_UPI, ownerInfo.upi)
+        editor.commit()
     }
 
     private companion object {

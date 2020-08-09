@@ -7,15 +7,16 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
 class LoginUserTest : LoginUser.Repository {
-    override fun loginUser(userInfo: UserInfo) {
+    override suspend fun loginUser(userInfo: UserInfo): Boolean {
         // do nothing
+        return false
     }
 
     @Test
     fun test_getMemberList() {
-        val loginUser = LoginUser(UserInfo.DUMMY_USER, this as LoginUser.Repository)
-        lateinit var result: Result<Unit>
-        runBlocking { result = loginUser.loginUser() }
+        val loginUser = LoginUser(this as LoginUser.Repository)
+        lateinit var result: Result<Boolean>
+        runBlocking { result = loginUser.loginUser(UserInfo.DUMMY_USER) }
         assertNotNull(result)
     }
 }

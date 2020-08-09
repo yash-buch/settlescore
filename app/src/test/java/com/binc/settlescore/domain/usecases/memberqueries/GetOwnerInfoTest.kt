@@ -32,7 +32,7 @@ class GetOwnerInfoTest {
     fun test_getOwnerInfo() {
         val repo: GetOwnerInfo.Repository = object : GetOwnerInfo.Repository {
             override fun getOwnerInfo(): OwnerInfo {
-                return OwnerInfo()
+                return OwnerInfo("dummy", "0000000000", "dummy", "dummy")
             }
         }
 

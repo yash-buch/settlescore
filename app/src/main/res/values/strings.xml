@@ -8,4 +8,9 @@
     <string name="last_payment">Last payment on:</string>
     <string name="comma_space_amount">, Amount:</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phNumber">Phone number</string>
+    <string name="upi">UPI</string>
+    <string name="save">Save</string>
 </resources>
